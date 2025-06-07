@@ -1,0 +1,18 @@
+version: 2
+updates:
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "daily"
+- package-ecosystem: "cargo"
+  directory: "/"
+  allow:
+  - dependency-type: all
+  groups:
+    minor-patch:
+      applies-to: version-updates
+      update-types:
+        - minor
+        - patch
+  schedule:
+    interval: "daily"
