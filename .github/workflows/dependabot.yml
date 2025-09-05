@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@496eb7a6d053154f00e01044ab472077386f5a35
+        uses: dependabot/fetch-metadata@46cfd663b8c18cab02928a3fa963cf0e73994bb1
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Enable auto-merge for Dependabot PRs
