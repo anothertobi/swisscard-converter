@@ -29,7 +29,7 @@ jobs:
       matrix:
         include:
         - language: rust
-          build-mode: manual
+          build-mode: none
 
     steps:
     - name: Checkout repository
@@ -42,13 +42,9 @@ jobs:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
 
-    # If the analyze step fails for one of the languages you are analyzing with
-    # "We were unable to automatically build your code", modify the matrix above
-    # to set the build-mode to "manual" and uncomment the command below.
-    - if: matrix.build-mode == 'manual'
-      shell: bash
-      run: |
-        cargo build --release
+    # For Rust projects, CodeQL uses build-mode "none" which means
+    # the Rust extractor will automatically extract code without needing
+    # an explicit build step
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
